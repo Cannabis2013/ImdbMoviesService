@@ -1,0 +1,24 @@
+
+<div id="header-cont" class="list-lout">
+    <p>Id</p>
+    <p>Title</p>
+    <p>Length</p>
+    <p>Popularity</p>
+</div>
+<div id="list-cont">
+    <Virtualize Context="movie" 
+                ItemsProvider="@ImdbAutoPaginatedFetch.LoadMovies" 
+                ItemSize="64">
+        <ItemContent>
+            <div id="item-cont" class="list-lout">
+                <p>@movie.Id</p>
+                <p>@movie.Title</p>
+                <p>@movie.Length</p>
+                <p>@movie.Popularity</p>
+            </div>
+        </ItemContent>
+        <Placeholder>
+            <p>Loading..</p>
+        </Placeholder>
+    </Virtualize>
+</div>

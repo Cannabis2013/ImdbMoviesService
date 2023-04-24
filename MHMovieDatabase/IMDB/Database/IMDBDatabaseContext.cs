@@ -14,8 +14,10 @@ public class ImdbDatabaseContext : MyDbContext<Movie>, IMovies
     {
         var max = startIndex + count;
         return Entities
-            .AsEnumerable()
-            .Where((x, i) => i >= startIndex && i <= max)
+            .Skip(startIndex)
+            .Take(count)
             .ToList();
     }
+
+    public int Count() => Entities.Count();
 }

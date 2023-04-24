@@ -1,6 +1,12 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@using MHMoviesBlazorClient.Components.ImdbMovies
 
-<h1>IMDB movies!</h1>
+<PageTitle>Movie list</PageTitle>
+
+<br/>
+<h1 style="text-align: center">IMDB movies</h1>
+<br/>
+
+<ImdbManualPaginatedView></ImdbManualPaginatedView>
 

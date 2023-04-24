@@ -1,0 +1,34 @@
+
+<div id="header-cont" class="list-lout">
+    <p>Id</p>
+    <p>Title</p>
+    <p>Length</p>
+    <p>Popularity</p>
+</div>
+<div id="list-cont">
+    <Virtualize Context="movie" 
+                Items="@PaginatedFetch.CachedMovies"
+                ItemSize="64">
+        <ItemContent>
+            <div id="item-cont" class="list-lout">
+                <p>@movie.Id</p>
+                <p>@movie.Title</p>
+                <p>@movie.Length</p>
+                <p>@movie.Popularity</p>
+            </div>
+        </ItemContent>
+    </Virtualize>
+    @if (_showFetchButton)
+    {
+        <div id="btn-wrp" class="h-center">
+            <button class="fetch-btn load-font" @onclick="async () =>await FetchMore(25)">25 more</button>
+            <button  class="fetch-btn load-font" @onclick="async () =>await FetchMore(50)">50 more</button>
+            <button  class="fetch-btn load-font" @onclick="async () =>await FetchMore(100)">100 more</button>
+            <button  class="fetch-btn load-font" @onclick="async () =>await FetchMore(500)">500 more</button>
+        </div>
+    }
+    else
+    {
+        <div id="load-cont" class="h-center load-font">Loading</div>
+    }
+</div>

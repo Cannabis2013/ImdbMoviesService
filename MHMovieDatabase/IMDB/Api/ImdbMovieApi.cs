@@ -10,17 +10,25 @@ public class ImdbMovieApi : Controller
 
     public ImdbMovieApi(ImdbDatabaseContext dbContext) => _dbContext = dbContext;
 
-    [HttpGet,Route("movies")]
+    [HttpGet,Route("")]
     public JsonResult All()
     {
         var movies = _dbContext.Movies();
         return new(movies);
     }
 
-    [HttpGet,Route("Paginated")]
+    [HttpGet,Route("paginated")]
     public JsonResult AllPaginated(int start, int count)
     {
+        Thread.Sleep(1200);
         var movies = _dbContext.Movies(start,count);
         return new(movies);
+    }
+
+    [HttpGet,Route("count")]
+    public int Count()
+    {
+        var count = _dbContext.Count();
+        return count;
     }
 }
