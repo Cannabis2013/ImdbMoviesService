@@ -2,7 +2,7 @@
 
 ## Short description
 
-Just wanted to be creative in another language than Java and Spring. I think the most important stuff with this excercise
+Just wanted to be creative in another language than Java and Spring. I think the most important part with this excercise
 is to understand the concept of pagination and deal with some of the difficulties that you may encounter when implementing this feature.
 
 I used Blazors component virtualization for better render performance and experimented with mainly two strategies
