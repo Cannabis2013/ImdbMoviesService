@@ -12,10 +12,10 @@ public class ImdbDatabaseContext : MyDbContext<Movie>, IMovies
 
     public List<Movie> Movies(int startIndex, int count)
     {
-        var max = startIndex + count;
+        var index = startIndex + 1;
+        var max = index + count;
         return Entities
-            .Skip(startIndex)
-            .Take(count)
+            .Where(m => m.Id >= index && m.Id <= max)
             .ToList();
     }
 

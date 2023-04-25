@@ -1,4 +1,5 @@
 using MHMovieDatabase.IMDB.Database;
+using MHMovieDatabase.IMDB.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MHMovieDatabase.IMDB.Api;
@@ -11,24 +12,11 @@ public class ImdbMovieApi : Controller
     public ImdbMovieApi(ImdbDatabaseContext dbContext) => _dbContext = dbContext;
 
     [HttpGet,Route("")]
-    public JsonResult All()
-    {
-        var movies = _dbContext.Movies();
-        return new(movies);
-    }
+    public List<Movie> All() => _dbContext.Movies();
 
     [HttpGet,Route("paginated")]
-    public JsonResult AllPaginated(int start, int count)
-    {
-        Thread.Sleep(1200);
-        var movies = _dbContext.Movies(start,count);
-        return new(movies);
-    }
+    public List<Movie> Page(int start, int count) => _dbContext.Movies(start,count);
 
     [HttpGet,Route("count")]
-    public int Count()
-    {
-        var count = _dbContext.Count();
-        return count;
-    }
+    public int Count() => _dbContext.Count();
 }

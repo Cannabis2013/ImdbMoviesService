@@ -10,7 +10,7 @@ public partial class ImdbManualPaginatedView : ComponentBase
 {
     [Inject] private ImdbManualpaginatedFetch PaginatedFetch { get; set; } = null!;
 
-    private Virtualize<ImdbMovie> _virtualizeComponent;
+    private string _loadText = "Loading";
     
     protected override async Task OnInitializedAsync()
     {
@@ -22,8 +22,20 @@ public partial class ImdbManualPaginatedView : ComponentBase
 
     private async Task FetchMore(int count)
     {
+        StartLoadState(count);
+        await PaginatedFetch.FetchMovies(count);
+        EndLoadState();
+    }
+
+    private void StartLoadState(int count)
+    {
+        _loadText = $"Loading {count} more movies for you";
         _showFetchButton = false;
-        await PaginatedFetch.FetchMore(count);
+    }
+
+    private void EndLoadState()
+    {
+        _loadText = !PaginatedFetch.HasMore() ? "No more movies to load" : _loadText;
         _showFetchButton = true;
     }
 }

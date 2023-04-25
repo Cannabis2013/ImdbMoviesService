@@ -25,12 +25,14 @@ public class ImdbManualpaginatedFetch
     public async Task Initialize()
     {
         _moviesCount = await _client.GetFromJsonAsync<int>(CountUri);
-        await FetchMore(50);
+        await FetchMovies(50);
     }
 
     public List<ImdbMovie> CachedMovies { get; set; } = new();
 
-    public async Task FetchMore(int count)
+    public bool HasMore() => _startIndex < _moviesCount;
+
+    public async Task FetchMovies(int count)
     {
         if (_startIndex >= _moviesCount)
             return;

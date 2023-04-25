@@ -1,0 +1,19 @@
+#sel-cont{
+    display: flex;
+    gap: 25px;
+    width: 100%;
+}
+
+#switch-btn{
+    background-color: transparent;
+    border-radius: 15px;
+    width: 80px;
+}
+
+#switch-btn:hover{
+    background-color: lightgray;
+}
+
+#switch-btn:active{
+    scale: 0.95;
+}

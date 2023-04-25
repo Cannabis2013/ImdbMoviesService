@@ -30,7 +30,7 @@ public class ImdbAutoPaginatedFetch
     {
         var startIndex = request.StartIndex;
         var count = request.Count;
-        if (startIndex > _index && startIndex < _moviesCount)
+        if (startIndex > _index)
         {
             if (_index == -1)
                 _index = 0;

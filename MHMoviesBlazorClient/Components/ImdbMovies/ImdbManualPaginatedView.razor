@@ -1,4 +1,3 @@
-
 <div id="header-cont" class="list-lout">
     <p>Id</p>
     <p>Title</p>
@@ -18,7 +17,7 @@
             </div>
         </ItemContent>
     </Virtualize>
-    @if (_showFetchButton)
+    @if (_showFetchButton && PaginatedFetch.HasMore())
     {
         <div id="btn-wrp" class="h-center">
             <button class="load-font fetch-btn" @onclick="async () =>await FetchMore(25)">25 more</button>
@@ -29,6 +28,6 @@
     }
     else
     {
-        <div id="load-cont" class="h-center load-font">Loading</div>
+        <div id="load-cont" class="h-center load-font">@_loadText</div>
     }
 </div>

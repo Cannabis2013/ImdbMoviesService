@@ -6,5 +6,20 @@
 
 <br/>
 
-<ImdbManualPaginatedView></ImdbManualPaginatedView>
+<div id="sel-cont">
+    <button id="switch-btn" @onclick="SwitchMode">Switch</button>
+    <h2>Current mode: @_modeLabel</h2>
+</div>
+
+<br/>
+
+@if (_showAutoView)
+{
+    <ImdbAutoPaginatedView></ImdbAutoPaginatedView>
+}
+else
+{
+    <ImdbManualPaginatedView></ImdbManualPaginatedView>
+}
+
 
