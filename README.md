@@ -35,5 +35,9 @@ Ehhh try XCode?
 - Db user: dbmovieuser
 - Db pass: dbmoviepass
 
+## SQL
+
+In the backend project there is a SQL script file that creates and populates the table.
+
 ## Final message
 Enjoy!
