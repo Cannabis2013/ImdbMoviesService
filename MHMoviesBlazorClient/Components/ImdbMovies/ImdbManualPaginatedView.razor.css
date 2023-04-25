@@ -56,10 +56,6 @@
     
 }
 
-#fetch-btn:hover{
-    color: blue;
-}
-
 .load-font{
     color: lightblue;
     font-size: 1.5rem;
@@ -72,6 +68,10 @@
     border:none;
     transition: all 0.2s ease-in-out;
     white-space: nowrap;
+}
+
+.fetch-btn:hover{
+    color: blue;
 }
 
 .fetch-btn:active{

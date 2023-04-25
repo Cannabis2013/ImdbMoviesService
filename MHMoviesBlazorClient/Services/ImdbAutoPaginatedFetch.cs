@@ -16,20 +16,28 @@ public class ImdbAutoPaginatedFetch
     private const string EndpointUri = "https://localhost:6083/movies/paginated";
     private const string CountUri = "https://localhost:6083/movies/count";
 
-    public ImdbAutoPaginatedFetch(HttpClient client) => Client = client;
-
-    public async Task Initialize() => _moviesCount = await Client.GetFromJsonAsync<int>(CountUri);
-
+    public ImdbAutoPaginatedFetch(HttpClient client)
+    {
+        Client = client;
+    }
+    
+    public async Task Initialize()
+    {
+        _moviesCount = await Client.GetFromJsonAsync<int>(CountUri);
+    }
+    
     public async ValueTask<ItemsProviderResult<ImdbMovie>> LoadMovies(ItemsProviderRequest request)
     {
         var startIndex = request.StartIndex;
         var count = request.Count;
-        if (startIndex > _index)
+        if (startIndex > _index && startIndex < _moviesCount)
         {
-            var uri = EndpointUri + $"?start={startIndex}&count={count}";
+            if (_index == -1)
+                _index = 0;
+            var uri = EndpointUri + $"?start={_index}&count={count}";
+            _index += count + 1;
             var movies = await Client.GetFromJsonAsync<List<ImdbMovie>>(uri) ?? new ();
             CachedMovies.AddRange(movies);
-            _index = startIndex;
             return new(movies,_moviesCount);
         }
         else
