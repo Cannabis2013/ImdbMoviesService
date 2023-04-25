@@ -16,8 +16,9 @@ The solution consists of a .NET 7 Web Application for the API part, and Blazor W
 
 ## Requirements
 
-.NET 7
-MySQL
+- .NET 7
+- MySQL
+- Probably Mono if you on a NIX based OS (MacOS included i think, but i'm not sure)
 
 ## Recommended editors
 
