@@ -10,9 +10,17 @@ public partial class PaginationNavigationBar : ComponentBase
     [Parameter]
     public EventCallback<int> PageRequestHandler { get; set; } = new();
 
-    private async Task HandlePageRequest(int pageNumber) => await PageRequestHandler.InvokeAsync(pageNumber);
-
     private int _baseIndex = 1;
+    private int _currentPageNumber = 1;
+    
+    private async Task HandlePageRequest(int pageNumber)
+    {
+        _currentPageNumber = pageNumber;
+        await PageRequestHandler.InvokeAsync(pageNumber);
+    }
+
+    private string SelectedCss(int pageNumberId) => _currentPageNumber == pageNumberId ? "page-btn-sel" : "";
+    
     private void ShiftBeginning() => _baseIndex = 1;
 
     private void ShiftEnd() => _baseIndex = PageCount - ButtonsCount;

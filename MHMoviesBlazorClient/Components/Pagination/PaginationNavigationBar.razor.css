@@ -21,6 +21,10 @@
     background-color: white;
 }
 
+.page-btn-sel{
+    background-color: lightblue;
+}
+
 .page-btn:hover{
     background-color: lightgray;
 }
