@@ -19,7 +19,7 @@ public partial class PaginationNavigationBar : ComponentBase
 
     private void ShiftLeft()
     {
-        if (_baseIndex > 0)
+        if (_baseIndex > 1)
             _baseIndex--;
     }
 

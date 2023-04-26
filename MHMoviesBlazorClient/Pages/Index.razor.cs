@@ -7,7 +7,9 @@ public partial class Index : ComponentBase
     private int ViewIndex = 0;
     private List<string> _labels = new()
     {
-        "Page","Slice manual", "Slice auto"
+        "Paginated view",
+        "Sliced view with buttons", 
+        "Sliced view with no buttons (Not working 100%)"
     };
 
     private string Label() => _labels.ElementAt(ViewIndex);
