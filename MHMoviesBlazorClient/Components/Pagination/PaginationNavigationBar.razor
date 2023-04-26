@@ -1,0 +1,11 @@
+<div id="btn-wrp" class="h-center">
+    <button class="page-btn" @onclick="ShiftBeginning">First</button>
+    <button class="page-btn" @onclick="ShiftLeft">Back</button>
+    @for (var i = _baseIndex; i <= _baseIndex + ButtonsCount ; i++)
+    {
+        var buttonLabel = i;
+        <button class="page-btn" @onclick="async () => await HandlePageRequest(buttonLabel)">@i</button>
+    }
+    <button class="page-btn" @onclick="ShiftRight">Next</button>
+    <button class="page-btn" @onclick="ShiftEnd">Last</button>
+</div>

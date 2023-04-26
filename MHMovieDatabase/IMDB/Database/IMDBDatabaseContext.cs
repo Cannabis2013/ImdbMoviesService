@@ -10,7 +10,25 @@ public class ImdbDatabaseContext : MyDbContext<Movie>, IMovies
 
     public List<Movie> Movies() => Entities.ToList();
 
-    public List<Movie> Movies(int startIndex, int count)
+    public List<Movie> Slice(int startIndex, int count) => MovieRange(startIndex, count);
+    
+    public List<Movie> Page(int page, int wordLimit)
+    {
+        /*
+         * I know this isn't best practice and there are performance issues
+         * with this approach. However, since MySQL doesn't provide an
+         * option to accurately retrieve the number of rows in a given table
+         * without traversing through the whole table, I adhere to the lazy
+         * implementation. Yes, I can rely on estimates that MySQL uses internally,
+         * but that is for another assignment.
+         */
+        var index = (page - 1) * wordLimit;
+        return MovieRange(index, wordLimit - 1);
+    }
+
+    public int Count() => Entities.Count();
+
+    private List<Movie> MovieRange(int startIndex, int count)
     {
         /*
          * This approach seems to be the best in terms of performance
@@ -32,7 +50,7 @@ public class ImdbDatabaseContext : MyDbContext<Movie>, IMovies
          *
          * This is cost expensive as MySQL will traverse through the whole list
          * until reaching the index position. It takes no effort to imagine
-         * the performance cost when dealing with a huge amount of rows.
+         * the performance cost when dealing with huge amount of rows.
          *
          * For more info on the issue take a look at (he sums it up pretty well I think):
          *  https://use-the-index-luke.com/sql/partial-results/fetch-next-page
@@ -44,6 +62,4 @@ public class ImdbDatabaseContext : MyDbContext<Movie>, IMovies
             .Where(m => m.Id >= index && m.Id <= max)
             .ToList();
     }
-
-    public int Count() => Entities.Count();
 }

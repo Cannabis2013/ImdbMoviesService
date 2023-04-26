@@ -1,11 +1,11 @@
 CREATE TABLE movies(
-  Id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT
-  ,Year       INTEGER  NOT NULL 
-  ,Length     INTEGER  NOT NULL
-  ,Title      VARCHAR(69) NOT NULL
-  ,Subject    VARCHAR(15) NOT NULL
-  ,Popularity INTEGER  NOT NULL
-  ,Awards     VARCHAR(3) NOT NULL
+  Id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  Year       INTEGER  NOT NULL ,
+  Length     INTEGER  NOT NULL,
+  Title      VARCHAR(69) NOT NULL,
+  Subject    VARCHAR(15) NOT NULL,
+  Popularity INTEGER  NOT NULL,
+  Awards     VARCHAR(3) NOT NULL
 );
 INSERT INTO movies(Year,Length,Title,Subject,Popularity,Awards) VALUES (1963,138,'8 1/2','Drama',80,'Yes');
 INSERT INTO movies(Year,Length,Title,Subject,Popularity,Awards) VALUES (1968,139,'2001: A Space Odyssey','Science Fiction',83,'No');

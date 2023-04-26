@@ -18,6 +18,7 @@ public class ImdbInjector : IServiceInjector
     public void Inject(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IDbConnectionDetails, MovieDbConnectionDetails>();
+        builder.Services.AddScoped<IMovies, ImdbDatabaseContext>();
         builder.Services.AddDbContext<ImdbDatabaseContext>();
     }
 }

@@ -1,3 +1,5 @@
+@using MHMoviesBlazorClient.Components.Pagination
+
 <div id="header-cont" class="list-lout">
     <p>Id</p>
     <p>Title</p>
@@ -6,9 +8,8 @@
 </div>
 <div id="list-cont">
     <Virtualize Context="movie" 
-                ItemsProvider="@ImdbAutoPaginatedFetch.LoadMovies" 
-                ItemSize="64"
-                OverscanCount="5">
+                Items="@PaginatedFetch.CachedMovies"
+                ItemSize="64">
         <ItemContent>
             <div id="item-cont" class="list-lout">
                 <p>@movie.Id</p>
@@ -17,8 +18,9 @@
                 <p>@movie.Popularity</p>
             </div>
         </ItemContent>
-        <Placeholder>
-            <p>Loading..</p>
-        </Placeholder>
     </Virtualize>
 </div>
+<br/>
+<PaginationNavigationBar 
+    PageCount="PaginatedFetch.PageCount()"
+    PageRequestHandler="async pageNumber => await PaginatedFetch.Fetch(pageNumber)"/>

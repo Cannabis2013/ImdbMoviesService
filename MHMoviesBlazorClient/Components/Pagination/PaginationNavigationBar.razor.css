@@ -1,0 +1,26 @@
+#btn-wrp{
+    width: min-content;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow:hidden;
+    border-radius: 15px;
+    background-color: black;
+    column-gap: 1px;
+    border:1px solid black;
+}
+
+.page-btn{
+    height: 32px;
+    width: 64px;
+    color: blue;
+    font-size: 1rem;
+    font-weight: bold;
+    border:0;
+    background-color: white;
+}
+
+.page-btn:hover{
+    background-color: lightgray;
+}

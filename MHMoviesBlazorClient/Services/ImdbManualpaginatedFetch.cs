@@ -6,15 +6,10 @@ namespace MHMoviesBlazorClient.Services;
 public class ImdbManualpaginatedFetch
 {
     private readonly HttpClient _client;
-    private readonly Mutex _mutex;
 
-    public ImdbManualpaginatedFetch(HttpClient client)
-    {
-        _client = client;
-        _mutex = new();
-    }
+    public ImdbManualpaginatedFetch(HttpClient client) => _client = client;
 
-    private const string EndpointUri = "https://localhost:6083/movies/paginated";
+    private const string EndpointUri = "https://localhost:6083/movies/slice";
     private const string CountUri = "https://localhost:6083/movies/count";
 
     private int _startIndex = 0;

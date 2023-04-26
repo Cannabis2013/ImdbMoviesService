@@ -4,12 +4,21 @@ namespace MHMoviesBlazorClient.Pages;
 
 public partial class Index : ComponentBase
 {
-    private bool _showAutoView = false;
-    private string _modeLabel = "Manual";
+    private int ViewIndex = 0;
+    private List<string> _labels = new()
+    {
+        "Page","Slice manual", "Slice auto"
+    };
+
+    private string Label() => _labels.ElementAt(ViewIndex);
 
     private void SwitchMode()
     {
-        _showAutoView = !_showAutoView;
-        _modeLabel = _showAutoView ? "Auto" : "Manual";
+        if (ViewIndex >= 2)
+            ViewIndex = 0;
+        else
+            ViewIndex++;
     }
+    
+    
 }

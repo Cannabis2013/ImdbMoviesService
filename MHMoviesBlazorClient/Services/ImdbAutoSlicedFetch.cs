@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace MHMoviesBlazorClient.Services;
 
-public class ImdbAutoPaginatedFetch
+public class ImdbAutoSlicedFetch
 {
     private readonly HttpClient Client;
 
@@ -13,10 +13,10 @@ public class ImdbAutoPaginatedFetch
     
     private List<ImdbMovie> CachedMovies { get; set; } = new();
     
-    private const string EndpointUri = "https://localhost:6083/movies/paginated";
+    private const string EndpointUri = "https://localhost:6083/movies/slice";
     private const string CountUri = "https://localhost:6083/movies/count";
 
-    public ImdbAutoPaginatedFetch(HttpClient client)
+    public ImdbAutoSlicedFetch(HttpClient client)
     {
         Client = client;
     }
@@ -40,11 +40,8 @@ public class ImdbAutoPaginatedFetch
             CachedMovies.AddRange(movies);
             return new(movies,_moviesCount);
         }
-        else
-        {
-            var movies = CachedMovies
-                .Skip(startIndex).Take(count);
-            return new(movies, _moviesCount);
-        }
+        var cachedMovies = CachedMovies
+            .Skip(startIndex).Take(count);
+        return new(cachedMovies, _moviesCount);
     }
 }

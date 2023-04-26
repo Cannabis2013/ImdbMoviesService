@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace MHMoviesBlazorClient.Components.ImdbMovies;
 
-public partial class ImdbManualPaginatedView : ComponentBase
+public partial class ImdbManualSliceView : ComponentBase
 {
     [Inject] private ImdbManualpaginatedFetch PaginatedFetch { get; set; } = null!;
 

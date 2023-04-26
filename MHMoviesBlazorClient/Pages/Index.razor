@@ -8,18 +8,16 @@
 
 <div id="sel-cont">
     <button id="switch-btn" @onclick="SwitchMode">Switch</button>
-    <h2>Current mode: @_modeLabel</h2>
+    <h2>Current mode: @Label()</h2>
 </div>
 
 <br/>
 
-@if (_showAutoView)
-{
-    <ImdbAutoPaginatedView></ImdbAutoPaginatedView>
+@switch(ViewIndex){
+    case 0: <ImdbPaginatedView/>;break;
+    case 1: <ImdbManualSliceView/>;break;
+    case 2: <ImdbAutoSliceView/>;break;
 }
-else
-{
-    <ImdbManualPaginatedView></ImdbManualPaginatedView>
-}
+
 
 
