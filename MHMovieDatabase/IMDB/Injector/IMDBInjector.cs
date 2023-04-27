@@ -4,9 +4,9 @@ using MHMovieDatabase.Shared.Database;
 
 namespace MHMovieDatabase.IMDB.Injector;
 
-public class ImdbInjector : IServiceInjector
+public class ImdbInjector : IServicesInjector
 {
-    public static IServiceInjector Instance()
+    public static IServicesInjector Instance()
     {
         return new ImdbInjector();
     }

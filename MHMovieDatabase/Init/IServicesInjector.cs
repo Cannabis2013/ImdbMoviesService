@@ -1,6 +1,6 @@
 namespace MHMovieDatabase.Init;
 
-public interface IServiceInjector
+public interface IServicesInjector
 {
     void Inject(WebApplicationBuilder builder);
 }

@@ -4,8 +4,8 @@ using MHMovieDatabase.Init;
 const string allowedOrigins = "_allowedOrigins";
 
 var builderConfig = new AppBuilderConfiguration(allowedOrigins);
-builderConfig.AddServiceInjector(ImdbInjector.Instance());
-
+builderConfig.AddServicesInjector(ImdbInjector.Instance());
+builderConfig.AddServicesInjector(ApiControllerInjector.Instance(allowedOrigins));
 var appConfig = new WebApplicationWithRouting(allowedOrigins);
 
 var builder = WebApplication.CreateBuilder();
