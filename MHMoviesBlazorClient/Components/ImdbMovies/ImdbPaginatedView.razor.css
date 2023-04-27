@@ -1,3 +1,17 @@
+#but-sel-cont{
+    display: flex;
+    column-gap: 5px;
+    align-content: center;
+    align-items: center;
+}
+
+#but-sel-text{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+    padding: 0;
+}
+
 .list-lout{
     display: grid;
     grid-auto-flow: row;
@@ -50,6 +64,6 @@
     background-color: lightgray;
 }
 
-p{
+#item-cont, #header-cont > p{
     text-align: center;
 }

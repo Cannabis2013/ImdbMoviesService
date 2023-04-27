@@ -1,5 +1,10 @@
 @using MHMoviesBlazorClient.Components.Pagination
 
+<div id="but-sel-cont">
+    <p id="but-sel-text">How many buttons?</p>
+    <input type="number" min="1" max="8" @bind="_buttonsCount" style="width: 48px;height: 32px;"/>
+</div>
+
 <div id="header-cont" class="list-lout">
     <p>Id</p>
     <p>Title</p>
@@ -23,5 +28,6 @@
 <br/>
 <PaginationNavigationBar 
     PageCount="PaginatedFetch.PageCount()"
+    ButtonsCount="@_buttonsCount"
     PageRequestHandler="async pageNumber => await PaginatedFetch.Fetch(pageNumber)"/>
 <br/>
